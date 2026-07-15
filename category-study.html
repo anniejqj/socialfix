@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学习场景 · Socialfix</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-0:#08081a;
+  --primary:#38bdf8; --primary-2:#7c3aed;
+  --text:#f5f5ff; --text-2:#c7c7e0; --text-3:#8b8bb0;
+  --border:rgba(255,255,255,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg-0);color:var(--text);font-family:'Inter','Noto Sans SC',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+.bg{position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(1000px 700px at 20% 10%, rgba(56,189,248,.28), transparent 60%),
+  radial-gradient(1000px 700px at 80% 90%, rgba(124,58,237,.22), transparent 60%),
+  linear-gradient(180deg,#08081a,#03030c);}
+.orbs{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;animation:float 20s ease-in-out infinite}
+.orb.o1{width:520px;height:520px;background:radial-gradient(circle,#38bdf8,transparent 65%);top:-140px;left:-120px}
+.orb.o2{width:460px;height:460px;background:radial-gradient(circle,#7c3aed,transparent 65%);top:34%;right:-160px;animation-delay:-6s}
+.orb.o3{width:380px;height:380px;background:radial-gradient(circle,#06d6a0,transparent 65%);bottom:-120px;left:24%;animation-delay:-12s;opacity:.35}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.08)}}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(24px);background:rgba(8,8,26,.55);border-bottom:1px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px;letter-spacing:-.02em;text-decoration:none;color:inherit}
+.logo-dot{width:12px;height:12px;background:linear-gradient(135deg,var(--primary),var(--primary-2));border-radius:50%;box-shadow:0 0 20px rgba(56,189,248,.7)}
+.nav-links{display:flex;gap:20px;align-items:center;font-size:14px}
+.nav-links a{color:var(--text-2);text-decoration:none;transition:.2s}
+.nav-links a:hover{color:#fff}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-3);text-decoration:none}
+.nav-cta{background:linear-gradient(135deg,#7c3aed,#ec4899);color:#fff!important;padding:8px 18px;border-radius:999px;font-weight:700}
+
+.header{padding:140px 40px 40px;text-align:center;max-width:960px;margin:0 auto;position:relative}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.3);color:var(--primary);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:22px;backdrop-filter:blur(10px)}
+.chip::before{content:"";width:6px;height:6px;background:var(--primary);border-radius:50%;box-shadow:0 0 12px var(--primary)}
+.header h1{font-size:clamp(56px,9vw,120px);font-weight:900;letter-spacing:-.04em;line-height:.95;background:linear-gradient(135deg,#fff 0%,var(--primary) 55%,var(--primary-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px;text-shadow:0 0 80px rgba(56,189,248,.2)}
+.header p{font-size:18px;color:var(--text-2);line-height:1.7;max-width:680px;margin:0 auto}
+
+section{padding:60px 40px}
+.container{max-width:1180px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--primary);font-size:12px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px}
+.eyebrow::before{content:"";width:32px;height:1px;background:var(--primary)}
+.sec-title{font-size:clamp(30px,4vw,44px);font-weight:900;letter-spacing:-.02em;margin-bottom:40px;line-height:1.15}
+
+.tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tech{padding:32px 28px;background:linear-gradient(160deg,rgba(56,189,248,.08),rgba(255,255,255,.02));border:1px solid var(--border);border-radius:24px;transition:.35s;position:relative;overflow:hidden}
+.tech::before{content:"";position:absolute;top:-40%;right:-40%;width:80%;height:80%;background:radial-gradient(circle,var(--primary),transparent 65%);opacity:0;filter:blur(30px);transition:.35s}
+.tech:hover{border-color:rgba(56,189,248,.4);transform:translateY(-6px)}
+.tech:hover::before{opacity:.2}
+.tech > *{position:relative;z-index:1}
+.tech-num{font-family:monospace;font-size:12px;font-weight:700;color:var(--primary);letter-spacing:.2em;margin-bottom:12px}
+.tech h4{font-size:20px;font-weight:900;margin-bottom:12px;letter-spacing:-.01em}
+.tech p{font-size:14px;color:var(--text-2);line-height:1.75}
+
+.map-wrap{margin-top:40px;position:relative;padding:40px 24px;background:linear-gradient(160deg,rgba(56,189,248,.05),rgba(124,58,237,.03));border:1px solid var(--border);border-radius:32px;overflow:hidden}
+.map-wrap::before{content:"";position:absolute;top:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,var(--primary),transparent 65%);opacity:.15;filter:blur(60px)}
+.map-hint{text-align:center;color:var(--text-3);font-size:13px;margin-bottom:28px}
+.map{position:relative;min-height:680px;max-width:860px;margin:0 auto}
+.path-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.node{position:absolute;width:130px;text-align:center;text-decoration:none;color:inherit;z-index:2}
+.node-circle{width:72px;height:72px;margin:0 auto 12px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:grid;place-items:center;font-size:30px;box-shadow:0 12px 32px rgba(56,189,248,.4),inset 0 3px 0 rgba(255,255,255,.25);transition:.35s;position:relative}
+.node-circle::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px dashed rgba(255,255,255,.15);opacity:0;transition:.35s}
+.node:hover .node-circle{transform:scale(1.12) rotate(-6deg)}
+.node:hover .node-circle::after{opacity:1;transform:rotate(60deg)}
+.node-num{display:inline-block;font-family:monospace;font-size:10px;font-weight:700;color:var(--primary);background:rgba(56,189,248,.15);padding:3px 10px;border-radius:999px;margin-bottom:4px;letter-spacing:.05em}
+.node-title{font-size:13px;font-weight:800;line-height:1.35;margin-bottom:2px}
+.node-diff{font-size:11px;color:var(--text-3)}
+.node.locked .node-circle{background:rgba(255,255,255,.05);border:1px dashed var(--border);color:var(--text-3);box-shadow:none}
+.node.locked{pointer-events:none;opacity:.45}
+.n1{top:10px;left:5%}.n2{top:130px;left:34%}.n3{top:50px;right:5%}.n4{top:260px;right:22%}.n5{top:300px;left:22%}.n6{top:470px;left:2%}.n7{top:500px;right:8%}
+
+.train-strip{margin:60px auto 0;max-width:900px;padding:32px 36px;border-radius:24px;background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(236,72,153,.15));border:1px solid rgba(236,72,153,.25);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.train-strip-txt h4{font-size:20px;font-weight:900;margin-bottom:4px}
+.train-strip-txt p{font-size:13px;color:var(--text-2)}
+.train-strip a{padding:14px 26px;background:linear-gradient(135deg,#7c3aed,#ec4899);border-radius:999px;color:#fff;text-decoration:none;font-weight:800;font-size:14px;white-space:nowrap;box-shadow:0 12px 30px rgba(236,72,153,.4);transition:.25s}
+.train-strip a:hover{transform:translateY(-2px)}
+
+footer{padding:80px 40px 50px;text-align:center;border-top:1px solid var(--border);margin-top:60px}
+.foot-text{color:var(--text-3);font-size:13px}
+
+@media (max-width:900px){
+  .tech-grid{grid-template-columns:1fr;gap:14px}
+  nav{padding:14px 20px}.header{padding:110px 20px 30px}section{padding:40px 20px}
+  .nav-links a:not(.back-link):not(.nav-cta){display:none}
+  .map{min-height:auto}.path-svg{display:none}
+  .node{position:relative;top:auto!important;left:auto!important;right:auto!important;width:100%;margin:0 0 16px;display:flex;align-items:center;gap:14px;text-align:left;background:rgba(255,255,255,.03);border:1px solid var(--border);padding:14px;border-radius:16px}
+  .node-circle{margin:0;width:56px;height:56px;font-size:24px;flex-shrink:0}
+  .node > div:not(.node-circle){flex:1}
+}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="orbs">
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+</div>
+
+<nav>
+  <a class="logo" href="index.html"><span class="logo-dot"></span>Socialfix</a>
+  <div class="nav-links">
+    <a class="back-link" href="index.html">← 回到首页</a>
+    <a href="simulator.html" class="nav-cta">🎯 训练场</a>
+  </div>
+</nav>
+
+<div class="header">
+  <div class="chip">01 · 学习场景</div>
+  <h1>校园里的<br>那些开不了口</h1>
+  <p>老师、同学、组员——这些每天见面的人，反而最容易说错话。这一章教你在教室、办公室、群聊里，如何把话说得让每个人都舒服。</p>
+</div>
+
+<section>
+  <div class="container">
+    <span class="eyebrow">Thinking Framework</span>
+    <h2 class="sec-title">和学习圈子对话的三个思维</h2>
+    <div class="tech-grid">
+      <div class="tech">
+        <div class="tech-num">思维 01</div>
+        <h4>先分角色，再选态度</h4>
+        <p>对老师、对同学、对组员，用的语气完全不同。开口前先问自己：这个人在这段关系里期待什么？他要的是「配合」，还是「意见」？找准位置，你就不容易说错话。</p>
+      </div>
+      <div class="tech">
+        <div class="tech-num">思维 02</div>
+        <h4>把"拒绝"包在"承认"里</h4>
+        <p>直接说「不行」会让对方下不了台。先承认对方的处境（「我知道你也是没办法」），再温和地说自己的边界。这样冲突值会直接减半，对方也更愿意接受。</p>
+      </div>
+      <div class="tech">
+        <div class="tech-num">思维 03</div>
+        <h4>就事论事，不做人格判断</h4>
+        <p>说「这次作业你没交」，而不是「你就是懒」。校园里的关系还很长，一次冲突别变成永久的标签——留白，是为将来的和解留空间。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <span class="eyebrow">Level Map</span>
+    <h2 class="sec-title">选一关开始练</h2>
+
+    <div class="map-wrap">
+      <div class="map-hint">从简单场景开始，一关一关来 · 点击节点进入</div>
+      <div class="map">
+        <svg class="path-svg" viewBox="0 0 860 680" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="pathGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#38bdf8" stop-opacity=".6"/>
+              <stop offset="100%" stop-color="#7c3aed" stop-opacity=".6"/>
+            </linearGradient>
+          </defs>
+          <path d="M 90 50 Q 200 120 320 160 T 720 100 Q 800 240 680 320 Q 500 360 340 350 Q 200 380 60 500 Q 250 540 720 540"
+                stroke="url(#pathGrad)" stroke-width="3" stroke-dasharray="6 8" fill="none"/>
+        </svg>
+
+        <a class="node n1" href="level.html?cat=study&id=1">
+          <div class="node-circle">🙋</div><span class="node-num">LV.1</span>
+          <div class="node-title">被老师当众批评</div><div class="node-diff">☆ 入门</div>
+        </a>
+        <a class="node n2" href="level.html?cat=study&id=2">
+          <div class="node-circle">📓</div><span class="node-num">LV.2</span>
+          <div class="node-title">同学想借你作业</div><div class="node-diff">☆ 入门</div>
+        </a>
+        <a class="node n3" href="level.html?cat=study&id=3">
+          <div class="node-circle">🧑‍🤝‍🧑</div><span class="node-num">LV.3</span>
+          <div class="node-title">组员一直摸鱼</div><div class="node-diff">☆☆ 进阶</div>
+        </a>
+        <a class="node n4" href="level.html?cat=study&id=4">
+          <div class="node-circle">💬</div><span class="node-num">LV.4</span>
+          <div class="node-title">被同学误会传话</div><div class="node-diff">☆☆ 进阶</div>
+        </a>
+        <a class="node n5" href="level.html?cat=study&id=5">
+          <div class="node-circle">📊</div><span class="node-num">LV.5</span>
+          <div class="node-title">和老师争成绩</div><div class="node-diff">☆☆ 进阶</div>
+        </a>
+        <a class="node n6 locked">
+          <div class="node-circle">🔒</div><span class="node-num">LV.6</span>
+          <div class="node-title">拒绝当班干部</div><div class="node-diff">敬请期待</div>
+        </a>
+        <a class="node n7 locked">
+          <div class="node-circle">🔒</div><span class="node-num">LV.7</span>
+          <div class="node-title">帮同学写检讨</div><div class="node-diff">敬请期待</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="train-strip">
+      <div class="train-strip-txt">
+        <h4>准备好了？去训练场随机抽一个场景</h4>
+        <p>不看分、不打卡，就是一次纯粹的练手。</p>
+      </div>
+      <a href="simulator.html">🎯 进入训练场</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="foot-text">Socialfix · 一次修一句话</div></footer>
+</body>
+</html>
